@@ -53,8 +53,16 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
         //Update UI
         document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
+        var input = document.querySelector('.final-score').value;
+        
+        if(input) {
+            var winningScore = input;
+        } else {
+            winningScore = 100;
+        }
+
         //Check if player won the game
-        if (scores[activePlayer] >= 100) {
+        if (scores[activePlayer] >= winningScore) {
             document.getElementById('name-' + activePlayer).textContent = 'Winner!';
             dice1DOM.style.display = 'none';
             dice2DOM.style.display = 'none';
@@ -98,6 +106,7 @@ function init() {
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
+    document.querySelector('.final-score').value = null;
 
 
 }
